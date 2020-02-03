@@ -18,7 +18,7 @@
   var days = Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
 
   if (days > 0) {
-    setInterval(() => {
+    var funcCallback = function() {
       var days_late = days_deadline - days;
       var opacity = (days_late * 100) / days_deadline / 100;
       opacity = opacity < 0 ? 0 : opacity;
@@ -26,6 +26,8 @@
       if (opacity >= 0 && opacity <= 1) {
         document.getElementsByTagName("BODY")[0].style.opacity = opacity;
       }
-    }, 3000);
+    };
+    funcCallback();
+    setInterval(funcCallback, 3000);
   }
 })();
